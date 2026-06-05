@@ -5,22 +5,21 @@ Provides the main entrypoint for BedrockAgentCoreApp with startup hooks
 for initializing infrastructure components.
 """
 
+from contextlib import asynccontextmanager
+
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 from loguru import logger
 
 from src.infrastructure.startup import initialize_infrastructure
 from src.infrastructure.streaming import stream_response
 
-# Initialize BedrockAgentCoreApp
-app = BedrockAgentCoreApp()
 
-
-@app.on_event("startup")
-async def startup_event():
+@asynccontextmanager
+async def lifespan(app):
     """
-    Application startup hook.
+    Application lifespan context manager.
 
-    Initializes infrastructure components:
+    Initializes infrastructure components on startup:
     - Observability (OpenTelemetry with CloudWatch GenAI Observability)
     - Memory system (creates or retrieves existing memory)
     - Guardrails (creates or retrieves existing guardrail)
@@ -46,6 +45,12 @@ async def startup_event():
         logger.warning(
             f"Guardrail initialization error: {results['guardrails'].get('error')}"
         )
+
+    yield
+
+
+# Initialize BedrockAgentCoreApp with lifespan context manager
+app = BedrockAgentCoreApp(lifespan=lifespan)
 
 
 @app.entrypoint
