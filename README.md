@@ -82,7 +82,7 @@ An AI-powered restaurant finder built with **AWS Bedrock AgentCore**, **LangGrap
 
 ## Prerequisites
 
-- **AWS Account** with Bedrock model access enabled (Claude 3.5 Haiku)
+- **AWS Account** with Bedrock model access enabled (Claude Opus 4.1)
 - **AWS CLI** configured with credentials (`aws configure`)
 - **Node.js 20+** (for CDK)
 - **Python 3.11+**

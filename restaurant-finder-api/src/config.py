@@ -11,15 +11,15 @@ class Settings(BaseSettings):
 
     # --- Model configurations ---
     ORCHESTRATOR_MODEL_ID: str = Field(
-        default="us.anthropic.claude-3-5-haiku-20241022-v1:0",
+        default="us.anthropic.claude-opus-4-1-20250805-v1:0",
         description="Model for main orchestrator (tool selection, conversation management).",
     )
     EXTRACTION_MODEL_ID: str = Field(
-        default="us.anthropic.claude-3-5-haiku-20241022-v1:0",
+        default="us.anthropic.claude-opus-4-1-20250805-v1:0",
         description="Model for data extraction tasks (JSON parsing, structured data).",
     )
     ROUTER_MODEL_ID: str = Field(
-        default="us.anthropic.claude-3-5-haiku-20241022-v1:0",
+        default="us.anthropic.claude-opus-4-1-20250805-v1:0",
         description="Model for router/intent classification (lightweight, fast).",
     )
 
