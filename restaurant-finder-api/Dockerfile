@@ -1,7 +1,7 @@
 FROM ghcr.io/astral-sh/uv:python3.11-bookworm-slim
 WORKDIR /app
 
-# All environment variables in one layer
+# All environment variables in one layer.
 ENV UV_SYSTEM_PYTHON=1 \
     UV_COMPILE_BYTECODE=1 \
     UV_NO_PROGRESS=1 \
