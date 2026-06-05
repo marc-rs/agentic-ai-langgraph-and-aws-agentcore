@@ -200,6 +200,7 @@ aws secretsmanager put-secret-value \
 
 **Option A: Automatic via GitHub Actions**
 
+Using this option because is faster
 Push to `main` with changes in `restaurant-finder-api/` — the `deploy-image.yml` workflow builds and deploys automatically.
 
 **Option B: Manual deployment**
