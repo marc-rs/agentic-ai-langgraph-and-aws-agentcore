@@ -288,7 +288,15 @@ export class AgentCoreStack extends cdk.Stack {
         new iam.PolicyStatement({
           sid: "BedrockPromptsAccess",
           effect: iam.Effect.ALLOW,
-          actions: ["bedrock:ListPrompts", "bedrock:GetPrompt", "bedrock:CreatePrompt", "bedrock:UpdatePrompt"],
+          actions: [
+            "bedrock:ListPrompts",
+            "bedrock:GetPrompt",
+            "bedrock:CreatePrompt",
+            "bedrock:UpdatePrompt",
+            "bedrock:CreatePromptVersion",
+            "bedrock:ListPromptVersions",
+            "bedrock:DeletePrompt"
+          ],
           resources: [`arn:aws:bedrock:${region}:${accountId}:prompt/*`],
         }),
         // Guardrails - create, list, version, and apply
